@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+
+<div class="contacto-container">
+    <h1>Contáctanos ⚽</h1>
+    <form method="POST" action="{% url 'contacto' %}">
+        {% csrf_token %}
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+
+        <label for="correo">Correo</label>
+        <input type="email" name="correo" placeholder="Tu correo" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

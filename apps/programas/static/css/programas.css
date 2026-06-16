@@ -1,0 +1,75 @@
+/* Contenedor principal */
+.programas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    color: #f5f5f5;
+    background-color: #111; /* fondo negro */
+}
+
+/* Título */
+.programas-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #FFD700; /* dorado */
+}
+
+.programas-container p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+/* Grid de tarjetas */
+.programas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Tarjeta individual */
+.programa-card {
+    background-color: #1c1c1c;
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.programa-card h2 {
+    font-size: 1.5rem;
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.programa-card p {
+    margin: 5px 0;
+    color: #ddd;
+}
+
+/* Hover efecto */
+.programa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Botón de inscripción */
+.btn-inscripcion {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #FFD700;
+    color: #111;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-inscripcion:hover {
+    background-color: #111;
+    color: #FFD700;
+    border: 1px solid #FFD700;
+}

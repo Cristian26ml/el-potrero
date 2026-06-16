@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/logros.css' %}">
+
+<div class="logros-container">
+    <h1>Logros de la Escuela ⚽</h1>
+
+    <div class="metrics">
+        <div class="metric">
+            <span class="number">{{ partidos_count }}</span>
+            <p>Partidos Disputados</p>
+        </div>
+        <div class="metric">
+            <span class="number">{{ entrenamientos_count }}</span>
+            <p>Entrenamientos Realizados</p>
+        </div>
+        <div class="metric">
+            <span class="number">{{ torneos_count }}</span>
+            <p>Torneos Organizados</p>
+        </div>
+    </div>
+
+    <h2>Trofeos</h2>
+    <div class="trofeos">
+        {% for trofeo in trofeos %}
+            <div class="trofeo-card">
+                <h3>{{ trofeo.nombre }}</h3>
+                <p>{{ trofeo.descripcion }}</p>
+                <p><strong>Año:</strong> {{ trofeo.año }}</p>
+            </div>
+        {% empty %}
+            <p>No hay trofeos registrados.</p>
+        {% endfor %}
+    </div>
+    <a href="{% url 'home' %}" class="btn-volver">Volver</a>
+</div>
+{% endblock %}

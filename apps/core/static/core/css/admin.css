@@ -1,0 +1,49 @@
+/* Encabezado negro con texto dorado */
+#header {
+    background-color: #000000;
+    color: #FFD700;
+}
+
+#header a:link, #header a:visited {
+    color: #FFD700;
+}
+
+#site-name {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* Botones dorados */
+.button, input[type=submit] {
+    background-color: #FFD700;
+    color: #000000;
+    border: none;
+    font-weight: bold;
+}
+
+.button:hover, input[type=submit]:hover {
+    background-color: #000000;
+    color: #FFD700;
+}
+
+/*Para el dashboard*/
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.metricas {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: #000;
+    color: #FFD700;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+

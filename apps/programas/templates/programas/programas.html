@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+{% block title %}Programas - Escuela de Fútbol El Potrero{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/programas.css' %}">
+{% endblock %}
+<div class="programas-container">
+    <h1>Programas de Entrenamiento</h1>
+    <p>Conoce los distintos programas que ofrece la Escuela de Fútbol El Potrero.</p>
+
+    <div class="programas-grid">
+        {% for programa in programas %}
+        <div class="programa-card">
+            <h2>{{ programa.nombre_programa }}</h2>
+            <p><strong>Horario:</strong> {{ programa.horario }}</p>
+            <p><strong>Ubicación:</strong> {{ programa.ubicacion }}</p>
+            <p>{{ programa.descripcion }}</p>
+            <a href="{% url 'registro' %}?programa={{ programa.id }}" class="btn-inscripcion">Inscribirse</a>
+        </div>
+        {% empty %}
+        <p>No hay programas disponibles en este momento.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

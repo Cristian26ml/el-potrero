@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscripción - El Potrero</title>
+    <link rel="stylesheet" href="{% static 'core/css/public.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="insc-hero">
+    <div class="insc-eyebrow">
+        <div class="insc-eyebrow-line"></div>
+        <span>Únete al equipo</span>
+        <div class="insc-eyebrow-line"></div>
+    </div>
+    <h1>Formulario de <span>Inscripción</span></h1>
+    <p>Completa tus datos y nos pondremos en contacto contigo</p>
+</div>
+
+<div class="insc-container">
+    <div class="insc-form-col">
+        <div class="insc-nota">
+            <i class="ti ti-info-circle"></i>
+            <p><strong>Inscripción gratuita.</strong> No se requiere ningún pago por transferencia bancaria, depósito u otros medios. El formulario solo registra tus datos de contacto.</p>
+        </div>
+
+        <div class="insc-card">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn-submit">Inscribirme ahora</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="insc-img-col">
+        <img src="{% static 'core/img/profesor.png' %}" alt="El Potrero">
+        <div class="insc-info-card">
+            <h3>¿Por qué unirte?</h3>
+            <div class="info-item">
+                <i class="ti ti-trophy"></i>
+                <span>Entrenadores certificados con experiencia de élite</span>
+            </div>
+            <div class="info-item">
+                <i class="ti ti-calendar"></i>
+                <span>Horarios flexibles adaptados a ti</span>
+            </div>
+            <div class="info-item">
+                <i class="ti ti-users"></i>
+                <span>Grupos reducidos para atención personalizada</span>
+            </div>
+            <div class="info-item">
+                <i class="ti ti-map-pin"></i>
+                <span>Instalaciones de primer nivel</span>
+            </div>
+            <a href="{% url 'home' %}" class="btn-volver">Volver</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

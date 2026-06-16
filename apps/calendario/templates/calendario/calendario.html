@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/calendario.css' %}">
+
+<div class="calendario-container">
+    <h1>Calendario Privado ⚽</h1>
+
+    {% for evento in eventos %}
+        <div class="evento">
+            <h2>{{ evento.titulo }}</h2>
+            <p><span>Fecha:</span> {{ evento.fecha|date:"d/m/Y H:i" }}</p>
+            <p><span>Tipo:</span> {{ evento.tipo_evento }}</p>
+            {% if evento.descripcion %}
+                <p><span>Descripción:</span> {{ evento.descripcion }}</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No hay eventos programados</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+.galeria-page {
+    background: #111;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin: 30px auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.galeria-page h2 {
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.galeria-page .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+.galeria-page p {
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.galeria-page .item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.galeria-page .item img:hover {
+    transform: scale(1.05);
+}

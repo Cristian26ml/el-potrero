@@ -1,0 +1,38 @@
+.calendario-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #111;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #FFD700;
+    color: #FFD700;
+}
+
+.calendario-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.evento {
+    background-color: #000;
+    border: 1px solid #FFD700;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.evento h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #FFD700;
+}
+
+.evento p {
+    margin: 5px 0;
+    color: #FFD700;
+}
+
+.evento span {
+    font-weight: bold;
+    color: #FFD700;
+}

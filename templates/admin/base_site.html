@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'core/img/LOGOFUTBOL.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'core/img/LOGOFUTBOL.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">
+        <img src="{% static 'core/img/LOGOFUTBOL.png' %}" alt="El Potrero" style="height:50px; vertical-align:middle;">
+        Panel Administrativo - El Potrero
+    </h1>
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+

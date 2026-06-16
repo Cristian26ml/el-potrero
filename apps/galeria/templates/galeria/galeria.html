@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Galería - Escuela de Fútbol El Potrero{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'galeria/css/galeria.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="galeria-page">
+    <h2>Galería completa</h2>
+    <div class="grid">
+        {% for media in galeria %}
+            <div class="item">
+                {% if media.tipo == "foto" %}
+                    <!-- Foto desde Google Drive -->
+                    <img src="{{ media.url_directo }}" alt="Foto">
+                {% elif media.tipo == "video" %}
+                    <!-- Video desde Google Drive -->
+                    <iframe src="{{ media.url_directo }}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No hay imágenes disponibles en la galería.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

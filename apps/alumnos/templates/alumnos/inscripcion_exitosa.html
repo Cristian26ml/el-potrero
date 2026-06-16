@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscripción Exitosa - El Potrero</title>
+    <link rel="stylesheet" href="{% static 'core/css/public.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body class="success-page">
+
+    <div class="success-card">
+        <div class="success-ambient"></div>
+        <div class="success-icon">⚽</div>
+        <div class="success-eyebrow">
+            <div class="success-eyebrow-line"></div>
+            <span>Registro completado</span>
+            <div class="success-eyebrow-line"></div>
+        </div>
+        <h1>¡Inscripción <span>Exitosa</span>!</h1>
+        <div class="success-divider"></div>
+        <p>Gracias por registrar a tu hijo en la <strong>Escuela de Fútbol El Potrero</strong>. Nos pondremos en contacto contigo a la brevedad.</p>
+        <a href="{% url 'home' %}" class="btn-volver">Volver a la página principal</a>
+    </div>
+
+</body>
+</html>

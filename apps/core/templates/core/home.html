@@ -1,0 +1,137 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Inicio - Escuela de Fútbol El Potrero{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="logo-container">
+        <img src="{% static 'core/img/lf.png' %}" alt="El Potrero" class="logo">
+    </div>
+</section>
+
+<!-- Banner -->
+<section class="banner">
+    <div class="banner-ambient"></div>
+    <div class="banner-content">
+        <div class="banner-eyebrow">
+            <div class="banner-eyebrow-line"></div>
+            <span>Escuela de Fútbol</span>
+        </div>
+        <p class="banner-slogan">
+            <span class="txt-dorado">Formando</span>
+            <span class="txt-blanco">Futbolistas de Élite</span>
+        </p>
+        <div class="banner-divider"></div>
+        <p class="banner-sub">Entrenamiento · Disciplina · Excelencia</p>
+        <a href="{% url 'inscripcion' %}" class="btn-inscripcion">Inscríbete ahora</a>
+    </div>
+    <div class="banner-scroll">
+        <span>Scroll</span>
+        <div class="banner-scroll-line"></div>
+    </div>
+</section>
+
+<!-- Secciones rápidas -->
+<section class="cards">
+    <div class="card">
+        <div class="card-bg" style="background-image: url('{% static 'core/img/programa.jpg' %}')"></div>
+        <div class="card-tint"></div>
+        <span class="card-num">01</span>
+        <div class="card-content">
+            <div class="card-icon-wrap"><i class="ti ti-activity"></i></div>
+            <h2 class="card-title">Programas</h2>
+            <div class="card-line"></div>
+            <p class="card-desc">Descubre nuestros entrenamientos y categorías.</p>
+            <a href="{% url 'programas' %}" class="btn-cards"><span>Ver más</span><i class="ti ti-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-bg" style="background-image: url('{% static 'core/img/calendario.jpg' %}')"></div>
+        <div class="card-tint"></div>
+        <span class="card-num">02</span>
+        <div class="card-content">
+            <div class="card-icon-wrap"><i class="ti ti-calendar"></i></div>
+            <h2 class="card-title">Calendario</h2>
+            <div class="card-line"></div>
+            <p class="card-desc">Acceso solo para alumnos.</p>
+            <a href="{% url 'calendario' %}" class="btn-cards"><span>Ver más</span><i class="ti ti-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-bg" style="background-image: url('{% static 'core/img/equipo.jpg' %}')"></div>
+        <div class="card-tint"></div>
+        <span class="card-num">03</span>
+        <div class="card-content">
+            <div class="card-icon-wrap"><i class="ti ti-camera"></i></div>
+            <h2 class="card-title">Galería</h2>
+            <div class="card-line"></div>
+            <p class="card-desc">Revive los mejores momentos en fotos y videos.</p>
+            <a href="{% url 'galeria' %}" class="btn-cards"><span>Ver más</span><i class="ti ti-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Logros -->
+<section class="logros-stats">
+    <div class="img-title">
+        <img src="{% static 'core/img/titulologros.png' %}" alt="El Potrero" class="logo-title">
+    </div>
+    <div class="section-logros">
+        <div class="stat">
+            <i class="ti ti-ball-football stat-icon"></i>
+            <p class="number" data-target="{{ partidos_count }}">{{ partidos_count }}</p>
+            <div class="divider-line"></div>
+            <p class="label">Partidos Disputados</p>
+        </div>
+        <div class="stat">
+            <i class="ti ti-run stat-icon"></i>
+            <p class="number" data-target="{{ entrenamientos_count }}">{{ entrenamientos_count }}</p>
+            <div class="divider-line"></div>
+            <p class="label">Entrenamientos Realizados</p>
+        </div>
+        <div class="stat">
+            <i class="ti ti-trophy stat-icon"></i>
+            <p class="number" data-target="{{ torneos_count }}">{{ torneos_count }}</p>
+            <div class="divider-line"></div>
+            <p class="label">Torneos Organizados</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Galería -->
+<section class="galeria-grid">
+    <div class="img-title">
+        <img src="{% static 'core/img/titulogale.png' %}" alt="El Potrero" class="logo-title">
+    </div>
+    <div class="grid">
+        {% for media in galeria|slice:":4" %}
+            <div class="item {% if forloop.first %}item-featured{% endif %}">
+                {% if media.tipo == "foto" %}
+                    <img src="{{ media.url_directo }}" alt="Foto">
+                    <div class="item-overlay"><i class="ti ti-zoom-in"></i></div>
+                {% elif media.tipo == "video" %}
+                    <div class="video-badge">video</div>
+                    <iframe src="{{ media.url_directo }}" frameborder="0" allowfullscreen></iframe>
+                    <div class="item-overlay"><i class="ti ti-player-play"></i></div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'galeria' %}" class="btn-galeria"><span>Ver más</span></a>
+</section>
+
+<section class="inscripcion-footer">
+    <div class="footer-eyebrow">
+        <div class="footer-eyebrow-line"></div>
+        <span>Únete hoy</span>
+        <div class="footer-eyebrow-line r"></div>
+    </div>
+    <h2 class="footer-titulo">¡Únete a <span>El Potrero</span>!</h2>
+    <p class="footer-sub">Comienza tu camino hacia la élite</p>
+    <div class="footer-divider"></div>
+    <a href="{% url 'inscripcion' %}" class="btn-inscripcionfooter">Inscríbete ahora</a>
+</section>
+{% endblock %}
