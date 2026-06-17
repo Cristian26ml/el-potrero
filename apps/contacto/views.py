@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import MensajeContacto
+from django.contrib import messages
 
 
 def contacto(request):
@@ -13,6 +14,7 @@ def contacto(request):
             correo=correo,
             mensaje=mensaje
         )
-        return redirect("contacto")  # recarga la página después de enviar
+        messages.success(request, "Tu mensaje fue enviado con éxito ✅")
+        return redirect("contacto")
 
     return render(request, "contacto/contacto.html")

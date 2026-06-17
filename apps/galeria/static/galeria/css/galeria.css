@@ -1,34 +1,131 @@
-.galeria-page {
-    background: #111;
-    padding: 40px 20px;
-    border-radius: 10px;
-    margin: 30px auto;
-    max-width: 1000px;
+/* Hero */
+.galeria-hero {
     text-align: center;
+    padding: 100px 32px 48px;
+    background: linear-gradient(135deg, rgba(0,0,0,0.97) 0%, rgba(218,165,32,0.05) 100%);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728) 1;
+    margin-bottom: 48px;
 }
 
-.galeria-page h2 {
-    color: #FFFFFF;
-    margin-bottom: 20px;
+.galeria-eyebrow {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin-bottom: 16px;
 }
 
-.galeria-page .grid {
+.galeria-eyebrow-line { width: 36px; height: 1px; background: #DAA520; }
+
+.galeria-eyebrow span {
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; color: #DAA520; font-weight: 500;
+}
+
+.galeria-hero h1 {
+    color: #fff;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900; letter-spacing: 3px;
+    text-transform: uppercase; margin: 0 0 8px;
+    font-family: Georgia, serif;
+}
+
+.galeria-hero h1 span { color: #F6D365; }
+
+.galeria-hero p {
+    color: rgba(255,255,255,0.4); font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; margin: 0;
+}
+
+/* Wrap y filtros */
+.galeria-wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+}
+
+.galeria-filtros {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 36px;
+}
+
+.filtro-btn {
+    padding: 8px 20px; border-radius: 4px;
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 500;
+    cursor: pointer; border: 0.5px solid rgba(218,165,32,0.3);
+    background: transparent; color: rgba(255,255,255,0.45);
+    transition: all 0.2s; font-family: Arial, sans-serif;
+}
+
+.filtro-btn.active,
+.filtro-btn:hover {
+    background: rgba(218,165,32,0.1);
+    border-color: rgba(218,165,32,0.6);
+    color: #F6D365;
+}
+
+/* Grid */
+.galeria-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-}
-.galeria-page p {
-    color: #FFFFFF;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
 }
 
-.galeria-page .item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+.galeria-item {
+    border-radius: 12px; overflow: hidden;
+    position: relative; background: #0d0d0d;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    aspect-ratio: 4/3; cursor: pointer;
+    transition: border-color 0.3s;
 }
 
-.galeria-page .item img:hover {
-    transform: scale(1.05);
+.galeria-item:hover { border-color: rgba(218,165,32,0.3); }
+
+.galeria-item img,
+.galeria-item iframe {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.45s ease;
+}
+
+.galeria-item:hover img { transform: scale(1.06); }
+
+.galeria-item::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+    opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+
+.galeria-item:hover::after { opacity: 1; }
+
+.item-overlay {
+    position: absolute; bottom: 12px; left: 12px;
+    z-index: 2; opacity: 0; transition: opacity 0.3s;
+}
+
+.galeria-item:hover .item-overlay { opacity: 1; }
+.item-overlay i { font-size: 18px; color: #F6D365; }
+
+.video-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 2;
+    background: rgba(0,0,0,0.65);
+    border: 0.5px solid rgba(218,165,32,0.4);
+    border-radius: 4px; padding: 3px 8px;
+    font-size: 10px; color: #F6D365;
+    letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+/* Ocultar items filtrados */
+.galeria-item.hidden { display: none; }
+
+/* Estado vacío */
+.galeria-empty {
+    grid-column: 1 / -1;
+    text-align: center; padding: 64px 32px;
+    color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px;
+    border: 0.5px dashed rgba(218,165,32,0.15); border-radius: 12px;
+}
+
+.galeria-empty i {
+    font-size: 40px; color: rgba(218,165,32,0.2);
+    display: block; margin-bottom: 16px;
 }

@@ -18,9 +18,23 @@ class CoreConfig(AppConfig):
         from apps.programas.models import Programa
         from apps.contacto.models import MensajeContacto
 
+        def exportar_csv(modeladmin, request, queryset):
+            import csv
+            from django.http import HttpResponse
+            response = HttpResponse(content_type="text/csv")
+            response["Content-Disposition"] = "attachment; filename=alumnos.csv"
+            writer = csv.writer(response)
+            writer.writerow(["Nombre", "Apellido", "Email"])
+            for alumno in queryset:
+                writer.writerow([alumno.nombre, alumno.apellido, alumno.email])
+            return response
+
+        exportar_csv.short_description = "Exportar seleccionados a CSV"
+
         class AlumnoAdmin(admin.ModelAdmin):
             list_display = ("nombre", "apellido", "apoderado",
                             "fecha_nacimiento", "email", "telefono", "fecha_inscripcion")
+            actions = [exportar_csv]
 
         class EventoAdmin(admin.ModelAdmin):
             list_display = ("titulo", "fecha", "tipo_evento")

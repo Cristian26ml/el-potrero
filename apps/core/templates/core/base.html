@@ -32,8 +32,9 @@
                 <li><a href="{% url 'home' %}">Inicio</a></li>
                 <li><a href="{% url 'programas' %}">Programas</a></li>
                 <li><a href="{% url 'calendario' %}">Calendario</a></li>
+                <li><a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a></li>
             </ul>
-
+            
             <ul class="nav-right">
                 <li><a href="{% url 'galeria' %}">Galería</a></li>
                 <li><a href="{% url 'logros' %}">Logros</a></li>
@@ -41,6 +42,11 @@
                 <li><a href="{% url 'inscripcion' %}" class="nav-inscripcion">Inscripción</a></li>
             </ul>
         </nav>
+        <div class="hero">
+            <div class="logo-container">
+                <img src="{% static 'core/img/lf.png' %}" alt="El Potrero" class="logo">
+            </div>
+        </div>
     </header>
 
     <!-- Contenido dinámico -->

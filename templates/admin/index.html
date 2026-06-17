@@ -54,6 +54,14 @@
                 <a href="{% url 'admin:galeria_media_add' %}" class="btn">+ Agregar foto/video</a>
             </div>
 
+            <div class="card">
+                <h2>Inscripciones por mes</h2>
+                <canvas id="inscripcionesChart"></canvas>
+                <script id="meses-data" type="application/json">{{ meses|safe }}</script>
+                <script id="totales-data" type="application/json">{{ totales|safe }}</script>
+            </div>
+
+
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script src="{% static 'core/js/main.js' %}"></script>
         </div>

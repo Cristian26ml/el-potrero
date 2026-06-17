@@ -1,75 +1,150 @@
-/* Contenedor principal */
-.programas-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+/* Hero */
+.prog-hero {
     text-align: center;
-    color: #f5f5f5;
-    background-color: #111; /* fondo negro */
+    padding: 100px 32px 48px;
+    background: linear-gradient(135deg, rgba(0,0,0,0.97) 0%, rgba(218,165,32,0.05) 100%);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728) 1;
+    margin-bottom: 56px;
 }
 
-/* Título */
-.programas-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #FFD700; /* dorado */
+.prog-eyebrow {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin-bottom: 16px;
 }
 
-.programas-container p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    color: #ccc;
+.prog-eyebrow-line { width: 36px; height: 1px; background: #DAA520; }
+
+.prog-eyebrow span {
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; color: #DAA520; font-weight: 500;
 }
 
-/* Grid de tarjetas */
+.prog-hero h1 {
+    color: #fff;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900; letter-spacing: 3px;
+    text-transform: uppercase; margin: 0 0 12px;
+    font-family: Georgia, serif;
+}
+
+.prog-hero h1 span { color: #F6D365; }
+
+.prog-hero p {
+    color: rgba(255,255,255,0.4); font-size: 13px;
+    letter-spacing: 1px; margin: 0 auto;
+    max-width: 480px; line-height: 1.7;
+}
+
+/* Wrap y grid */
+.prog-wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px 80px; }
+
 .programas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-/* Tarjeta individual */
+/* Tarjeta */
 .programa-card {
-    background-color: #1c1c1c;
-    border: 2px solid #FFD700;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.15);
+    border-radius: 16px; padding: 32px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color 0.3s, transform 0.3s;
 }
+
+.programa-card:hover {
+    border-color: rgba(218,165,32,0.4);
+    transform: translateY(-4px);
+}
+
+.programa-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #DAA520, #F6D365, #DAA520, transparent);
+}
+
+.prog-card-num {
+    font-size: 48px; font-weight: 700;
+    color: rgba(218,165,32,0.05);
+    font-family: Georgia, serif;
+    position: absolute; top: 16px; right: 20px; line-height: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.prog-card-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(218,165,32,0.08);
+    border: 0.5px solid rgba(218,165,32,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+}
+
+.prog-card-icon i { font-size: 20px; color: #DAA520; }
 
 .programa-card h2 {
-    font-size: 1.5rem;
-    color: #FFD700;
-    margin-bottom: 10px;
+    color: #F6D365; font-size: 18px; font-weight: 600;
+    margin: 0 0 16px; font-family: Georgia, serif; letter-spacing: 0.5px;
 }
 
-.programa-card p {
-    margin: 5px 0;
-    color: #ddd;
+.prog-divider {
+    width: 32px; height: 1px;
+    background: rgba(218,165,32,0.25); margin-bottom: 16px;
 }
 
-/* Hover efecto */
-.programa-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+.prog-info { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+
+.prog-info-item { display: flex; align-items: flex-start; gap: 10px; }
+
+.prog-info-item > i { font-size: 14px; color: rgba(218,165,32,0.5); flex-shrink: 0; margin-top: 2px; }
+
+.prog-info-item strong {
+    color: rgba(218,165,32,0.7); font-size: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 2px;
 }
 
-/* Botón de inscripción */
+.prog-info-item span { font-size: 13px; color: rgba(255,255,255,0.55); }
+
+.prog-desc {
+    color: rgba(255,255,255,0.45); font-size: 13px;
+    line-height: 1.7; margin: 0 0 24px; flex: 1;
+}
+
+/* Botón */
 .btn-inscripcion {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #FFD700;
-    color: #111;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block; padding: 12px 28px;
+    background: linear-gradient(135deg, #B38728 0%, #FBF5B7 25%, #DAA520 50%, #F6D365 75%, #AA771C 100%);
+    color: #111; text-decoration: none; font-weight: 800;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    border-radius: 4px; border: 1px solid #FDF6C7;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 1px 3px rgba(255,255,255,0.4) inset;
+    transition: all 0.3s ease; text-align: center;
 }
 
 .btn-inscripcion:hover {
-    background-color: #111;
-    color: #FFD700;
-    border: 1px solid #FFD700;
+    background: linear-gradient(135deg, #AA771C 0%, #F6D365 25%, #DAA520 50%, #FBF5B7 75%, #B38728 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(0,0,0,0.5), 0 0 25px rgba(250,218,94,0.4);
+}
+
+.btn-inscripcion:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Estado vacío */
+.prog-empty {
+    grid-column: 1 / -1;
+    text-align: center; padding: 64px 32px;
+    color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px;
+    border: 0.5px dashed rgba(218,165,32,0.15); border-radius: 12px;
+}
+
+.prog-empty i {
+    font-size: 40px; color: rgba(218,165,32,0.2);
+    display: block; margin-bottom: 16px;
 }

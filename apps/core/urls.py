@@ -10,4 +10,6 @@ urlpatterns = [
     path("galeria/", galeria_views.galeria, name="galeria"),
     path("logros/", core_views.logros, name="logros"),
     path("contacto/", contacto_views.contacto, name="contacto"),
+    path("sobre-nosotros/", core_views.sobre_nosotros, name="sobre_nosotros"),
+
 ]

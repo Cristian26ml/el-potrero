@@ -8,22 +8,43 @@
 {% endblock %}
 
 {% block content %}
-<section class="galeria-page">
-    <h2>Galería completa</h2>
-    <div class="grid">
+<div class="galeria-hero">
+    <div class="galeria-eyebrow">
+        <div class="galeria-eyebrow-line"></div>
+        <span>Momentos del Potrero</span>
+        <div class="galeria-eyebrow-line"></div>
+    </div>
+    <h1>Galería <span>Completa</span></h1>
+    <p>Fotos y videos de nuestra escuela</p>
+</div>
+
+<div class="galeria-wrap">
+    <div class="galeria-filtros">
+        <button class="filtro-btn active" data-filtro="todo">Todo</button>
+        <button class="filtro-btn" data-filtro="foto">Fotos</button>
+        <button class="filtro-btn" data-filtro="video">Videos</button>
+    </div>
+
+    <div class="galeria-grid">
         {% for media in galeria %}
-            <div class="item">
+            <div class="galeria-item" data-tipo="{{ media.tipo }}">
                 {% if media.tipo == "foto" %}
-                    <!-- Foto desde Google Drive -->
                     <img src="{{ media.url_directo }}" alt="Foto">
+                    <div class="item-overlay"><i class="ti ti-zoom-in"></i></div>
                 {% elif media.tipo == "video" %}
-                    <!-- Video desde Google Drive -->
-                    <iframe src="{{ media.url_directo }}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                    <div class="video-badge">video</div>
+                    <iframe src="{{ media.url_directo }}" frameborder="0" allowfullscreen></iframe>
+                    <div class="item-overlay"><i class="ti ti-player-play"></i></div>
                 {% endif %}
             </div>
         {% empty %}
-            <p>No hay imágenes disponibles en la galería.</p>
+            <div class="galeria-empty">
+                <i class="ti ti-photo-off"></i>
+                <p>No hay imágenes disponibles en la galería.</p>
+            </div>
         {% endfor %}
     </div>
-</section>
+</div>
+<script src="{% static 'galeria/js/galeria.js' %}"></script>
+
 {% endblock %}

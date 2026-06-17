@@ -37,3 +37,7 @@ def logros(request):
 
 def contacto(request):
     return render(request, "contacto/contacto.html")
+
+
+def sobre_nosotros(request):
+    return render(request, "core/sobre_nosotros.html")

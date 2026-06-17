@@ -3,20 +3,85 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
 
-<div class="contacto-container">
-    <h1>Contáctanos ⚽</h1>
-    <form method="POST" action="{% url 'contacto' %}">
-        {% csrf_token %}
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" placeholder="Tu nombre" required>
-
-        <label for="correo">Correo</label>
-        <input type="email" name="correo" placeholder="Tu correo" required>
-
-        <label for="mensaje">Mensaje</label>
-        <textarea name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
-
-        <button type="submit">Enviar</button>
-    </form>
+<div class="contacto-hero">
+    <div class="contacto-eyebrow">
+        <div class="contacto-eyebrow-line"></div>
+        <span>Estamos para ayudarte</span>
+        <div class="contacto-eyebrow-line"></div>
+    </div>
+    <h1><span>Contáctanos</span></h1>
+    <p>Responderemos a la brevedad posible</p>
 </div>
+
+{% if messages %}
+    <div class="contacto-alert">
+        {% for message in messages %}
+            <i class="ti ti-circle-check"></i> {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="contacto-layout">
+    <div class="contacto-card">
+        <form method="POST" action="{% url 'contacto' %}">
+            {% csrf_token %}
+            <div class="field-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="field-group">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" name="correo" id="correo" placeholder="Tu correo" required>
+            </div>
+            <div class="field-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+            </div>
+            <button type="submit" class="btn-enviar">Enviar mensaje</button>
+        </form>
+    </div>
+
+    <div class="contacto-info">
+        <div class="info-card">
+            <h3>Información</h3>
+            <div class="info-item">
+                <div class="info-icon"><i class="ti ti-map-pin"></i></div>
+                <div class="info-text">
+                    <strong>Dirección</strong>
+                    <span>Santiago, Chile</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i class="ti ti-phone"></i></div>
+                <div class="info-text">
+                    <strong>Teléfono</strong>
+                    <span>+56 9 XXXX XXXX</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i class="ti ti-mail"></i></div>
+                <div class="info-text">
+                    <strong>Email</strong>
+                    <span>contacto@elpotrero.cl</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-card">
+            <h3>Redes sociales</h3>
+            <div class="social-links-contact">
+                <a href="https://facebook.com/elpotrero" target="_blank" class="social-link">
+                    <i class="ti ti-brand-facebook"></i><span>Facebook</span>
+                </a>
+                <a href="https://instagram.com/elpotrero" target="_blank" class="social-link">
+                    <i class="ti ti-brand-instagram"></i><span>Instagram</span>
+                </a>
+                <a href="https://twitter.com/elpotrero" target="_blank" class="social-link">
+                    <i class="ti ti-brand-x"></i><span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

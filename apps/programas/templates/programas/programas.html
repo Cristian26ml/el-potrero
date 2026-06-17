@@ -1,27 +1,58 @@
 {% extends "core/base.html" %}
 {% load static %}
-{% block content %}
+
 {% block title %}Programas - Escuela de Fútbol El Potrero{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/programas.css' %}">
+<link rel="stylesheet" href="{% static 'css/programas.css' %}">
 {% endblock %}
-<div class="programas-container">
-    <h1>Programas de Entrenamiento</h1>
-    <p>Conoce los distintos programas que ofrece la Escuela de Fútbol El Potrero.</p>
 
+{% block content %}
+
+<div class="prog-hero">
+    <div class="prog-eyebrow">
+        <div class="prog-eyebrow-line"></div>
+        <span>Lo que ofrecemos</span>
+        <div class="prog-eyebrow-line"></div>
+    </div>
+    <h1>Programas de <span>Entrenamiento</span></h1>
+    <p>Conoce los distintos programas que ofrece la Escuela de Fútbol El Potrero.</p>
+</div>
+
+<div class="prog-wrap">
     <div class="programas-grid">
         {% for programa in programas %}
-        <div class="programa-card">
-            <h2>{{ programa.nombre_programa }}</h2>
-            <p><strong>Horario:</strong> {{ programa.horario }}</p>
-            <p><strong>Ubicación:</strong> {{ programa.ubicacion }}</p>
-            <p>{{ programa.descripcion }}</p>
-            <a href="{% url 'registro' %}?programa={{ programa.id }}" class="btn-inscripcion">Inscribirse</a>
-        </div>
+            <div class="programa-card">
+                <span class="prog-card-num">0{{ forloop.counter }}</span>
+                <div class="prog-card-icon"><i class="ti ti-ball-football"></i></div>
+                <h2>{{ programa.nombre_programa }}</h2>
+                <div class="prog-divider"></div>
+                <div class="prog-info">
+                    <div class="prog-info-item">
+                        <i class="ti ti-clock"></i>
+                        <div>
+                            <strong>Horario</strong>
+                            <span>{{ programa.horario }}</span>
+                        </div>
+                    </div>
+                    <div class="prog-info-item">
+                        <i class="ti ti-map-pin"></i>
+                        <div>
+                            <strong>Ubicación</strong>
+                            <span>{{ programa.ubicacion }}</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="prog-desc">{{ programa.descripcion }}</p>
+                <a href="{% url 'registro' %}?programa={{ programa.id }}" class="btn-inscripcion">Inscribirse</a>
+            </div>
         {% empty %}
-        <p>No hay programas disponibles en este momento.</p>
+            <div class="prog-empty">
+                <i class="ti ti-clipboard-off"></i>
+                <p>No hay programas disponibles en este momento.</p>
+            </div>
         {% endfor %}
     </div>
 </div>
+
 {% endblock %}

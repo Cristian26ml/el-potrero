@@ -1,0 +1,64 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Sobre Nosotros - El Potrero{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/sobre_nosotros.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="sobre-hero">
+    <div class="sobre-eyebrow">
+        <div class="sobre-eyebrow-line"></div>
+        <span>Nuestra historia</span>
+        <div class="sobre-eyebrow-line"></div>
+    </div>
+    <h1>Sobre <span>Nosotros</span></h1>
+    <p class="lead">La Escuela de Fútbol El Potrero nació con el propósito de formar jóvenes atletas, transmitiendo valores de disciplina, respeto y pasión por el deporte.</p>
+</div>
+
+<div class="sobre-wrap">
+    <div class="sobre-mision">
+        <div class="sobre-mision-text">
+            <h2>Quiénes somos</h2>
+            <p>Desde nuestros inicios hemos buscado ser más que una escuela: un espacio de comunidad, donde cada alumno encuentra apoyo, motivación y oportunidades para crecer tanto en lo deportivo como en lo personal. Con entrenadores comprometidos y programas adaptados a distintas edades, El Potrero se ha consolidado como un referente en la formación futbolística juvenil.</p>
+        </div>
+        <div class="sobre-mision-visual">
+            <span class="big-icon">⚽</span>
+            <p>Nuestra misión es que cada niño y joven que pase por nuestras canchas se lleve no solo habilidades técnicas, sino también <em>recuerdos y aprendizajes</em> que lo acompañen toda la vida.</p>
+        </div>
+    </div>
+
+    <div class="sobre-valores-title">
+        <div class="sobre-valores-title-line"></div>
+        <h2>Nuestros Valores</h2>
+        <div class="sobre-valores-title-line"></div>
+    </div>
+
+    <div class="valores-grid">
+        <div class="valor-card">
+            <div class="valor-icon"><i class="ti ti-shield-check"></i></div>
+            <h3>Disciplina</h3>
+            <p>Formamos hábitos de esfuerzo y constancia dentro y fuera de la cancha.</p>
+        </div>
+        <div class="valor-card">
+            <div class="valor-icon"><i class="ti ti-heart-handshake"></i></div>
+            <h3>Respeto</h3>
+            <p>Fomentamos el respeto entre compañeros, entrenadores y familias.</p>
+        </div>
+        <div class="valor-card">
+            <div class="valor-icon"><i class="ti ti-flame"></i></div>
+            <h3>Pasión</h3>
+            <p>El amor por el fútbol es el motor que impulsa todo lo que hacemos.</p>
+        </div>
+    </div>
+
+    <div class="sobre-quote">
+        <span class="quote-mark">"</span>
+        <blockquote>Cada joven que pasa por El Potrero se lleva más que fútbol: se lleva una familia, valores y recuerdos para toda la vida.</blockquote>
+        <cite>— El Potrero, Escuela de Fútbol</cite>
+    </div>
+</div>
+
+{% endblock %}

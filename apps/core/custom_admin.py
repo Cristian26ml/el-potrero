@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from django.template.response import TemplateResponse
 from apps.contacto.models import MensajeContacto
-
-# 1. Definimos primero el sitio administrador personalizado
+from django.db.models.functions import TruncMonth
+from django.db.models import Count
 
 
 class CustomAdminSite(admin.AdminSite):
@@ -14,7 +14,6 @@ class CustomAdminSite(admin.AdminSite):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            # Esto reemplaza el index por defecto con tu dashboard personalizado
             path("", self.admin_view(self.dashboard), name="index"),
         ]
         return custom_urls + urls
@@ -25,6 +24,15 @@ class CustomAdminSite(admin.AdminSite):
         from apps.logros.models import Trofeo
         from apps.galeria.models import Media
         from apps.usuarios.models import Profile
+
+        # --- Inscripciones por mes ---
+        inscripciones_por_mes = (
+            Alumno.objects
+            .annotate(mes=TruncMonth("fecha_inscripcion"))
+            .values("mes")
+            .annotate(total=Count("id"))
+            .order_by("mes")
+        )
 
         usuarios_por_rol = {
             "Administradores": Profile.objects.filter(rol="admin").count(),
@@ -42,20 +50,20 @@ class CustomAdminSite(admin.AdminSite):
             cantidades=list(usuarios_por_rol.values()),
             fotos_count=Media.objects.filter(tipo="foto").count(),
             videos_count=Media.objects.filter(tipo="video").count(),
+            meses=[i["mes"].strftime("%b %Y") for i in inscripciones_por_mes],
+            totales=[i["total"] for i in inscripciones_por_mes],
         )
         return TemplateResponse(request, "admin/index.html", context)
 
 
-# 2. Instanciamos el sitio personalizado
+# Instancia del sitio personalizado
 admin_site = CustomAdminSite(name="custom_admin")
 
 
-# 3. Definimos el ModelAdmin
 class MensajeContactoAdmin(admin.ModelAdmin):
     list_display = ("nombre", "correo", "mensaje", "fecha_envio")
     search_fields = ("nombre", "correo")
     list_filter = ("fecha_envio",)
 
 
-# 4. Registramos el modelo en la instancia que YA EXISTE arriba
 admin_site.register(MensajeContacto, MensajeContactoAdmin)

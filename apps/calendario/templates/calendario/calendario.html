@@ -3,20 +3,62 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/calendario.css' %}">
 
-<div class="calendario-container">
-    <h1>Calendario Privado ⚽</h1>
-
-    {% for evento in eventos %}
-        <div class="evento">
-            <h2>{{ evento.titulo }}</h2>
-            <p><span>Fecha:</span> {{ evento.fecha|date:"d/m/Y H:i" }}</p>
-            <p><span>Tipo:</span> {{ evento.tipo_evento }}</p>
-            {% if evento.descripcion %}
-                <p><span>Descripción:</span> {{ evento.descripcion }}</p>
-            {% endif %}
-        </div>
-    {% empty %}
-        <p>No hay eventos programados</p>
-    {% endfor %}
+<div class="cal-hero">
+    <div class="cal-eyebrow">
+        <div class="cal-eyebrow-line"></div>
+        <span>Área privada</span>
+        <div class="cal-eyebrow-line"></div>
+    </div>
+    <h1>Calendario <span>de Eventos</span></h1>
+    <p>Próximas actividades programadas</p>
+    <div class="cal-badge">
+        <i class="ti ti-lock"></i> Solo para alumnos
+    </div>
 </div>
+
+<div class="cal-wrap">
+    <div class="cal-filtros">
+        <button class="cal-filtro active" data-filtro="todo">Todos</button>
+        <button class="cal-filtro" data-filtro="partido">Partidos</button>
+        <button class="cal-filtro" data-filtro="entrenamiento">Entrenamientos</button>
+        <button class="cal-filtro" data-filtro="torneo">Torneos</button>
+    </div>
+
+    <div class="eventos-list">
+        {% for evento in eventos %}
+            <div class="evento" data-tipo="{{ evento.tipo_evento|lower }}">
+                <div class="evento-fecha-col">
+                    <span class="evento-dia">{{ evento.fecha|date:"d" }}</span>
+                    <span class="evento-mes">{{ evento.fecha|date:"M" }}</span>
+                    <span class="evento-hora">{{ evento.fecha|date:"H:i" }}</span>
+                </div>
+                <div class="evento-body">
+                    <div class="evento-header">
+                        <h2>{{ evento.titulo }}</h2>
+                        <span class="evento-tipo tipo-{{ evento.tipo_evento|lower }}">
+                            {% if evento.tipo_evento|lower == "partido" %}
+                                <i class="ti ti-ball-football"></i>
+                            {% elif evento.tipo_evento|lower == "entrenamiento" %}
+                                <i class="ti ti-run"></i>
+                            {% elif evento.tipo_evento|lower == "torneo" %}
+                                <i class="ti ti-trophy"></i>
+                            {% endif %}
+                            {{ evento.tipo_evento }}
+                        </span>
+                    </div>
+                    {% if evento.descripcion %}
+                        <p class="evento-desc">{{ evento.descripcion }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <div class="cal-empty">
+                <i class="ti ti-calendar-off"></i>
+                <p>No hay eventos programados.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="{% static 'static/js/calendario.js' %}"></script>
+
 {% endblock %}

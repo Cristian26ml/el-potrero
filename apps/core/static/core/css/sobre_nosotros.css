@@ -1,0 +1,161 @@
+/* Hero */
+.sobre-hero {
+    text-align: center;
+    padding: 100px 32px 48px;
+    background: linear-gradient(135deg, rgba(0,0,0,0.97) 0%, rgba(218,165,32,0.05) 100%);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728) 1;
+    margin-bottom: 64px;
+}
+
+.sobre-eyebrow {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin-bottom: 16px;
+}
+
+.sobre-eyebrow-line { width: 36px; height: 1px; background: #DAA520; }
+
+.sobre-eyebrow span {
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; color: #DAA520; font-weight: 500;
+}
+
+.sobre-hero h1 {
+    color: #fff;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900; letter-spacing: 3px;
+    text-transform: uppercase; margin: 0 0 16px;
+    font-family: Georgia, serif;
+}
+
+.sobre-hero h1 span { color: #F6D365; }
+
+.sobre-hero .lead {
+    color: rgba(255,255,255,0.55); font-size: 15px;
+    line-height: 1.8; max-width: 640px; margin: 0 auto;
+}
+
+/* Wrap */
+.sobre-wrap { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
+
+/* Misión */
+.sobre-mision {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; margin-bottom: 64px; align-items: center;
+}
+
+.sobre-mision-text h2 {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: #DAA520; font-weight: 500; margin: 0 0 16px;
+}
+
+.sobre-mision-text p {
+    color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.9; margin: 0;
+}
+
+.sobre-mision-visual {
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.2);
+    border-radius: 16px; padding: 36px; text-align: center;
+    position: relative; overflow: hidden;
+}
+
+.sobre-mision-visual::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #DAA520, #F6D365, #DAA520, transparent);
+}
+
+.sobre-mision-visual .big-icon {
+    font-size: 48px; display: block; margin-bottom: 16px;
+}
+
+.sobre-mision-visual p {
+    color: rgba(255,255,255,0.45); font-size: 13px;
+    line-height: 1.7; margin: 0; font-style: italic;
+}
+
+.sobre-mision-visual p em { color: #F6D365; font-style: normal; }
+
+/* Valores */
+.sobre-valores-title {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 32px;
+}
+
+.sobre-valores-title-line { flex: 1; height: 1px; background: rgba(218,165,32,0.15); }
+
+.sobre-valores-title h2 {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: #DAA520; font-weight: 500; margin: 0; white-space: nowrap;
+}
+
+.valores-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-bottom: 64px;
+}
+
+.valor-card {
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.12);
+    border-radius: 12px; padding: 28px 20px; text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.valor-card:hover {
+    border-color: rgba(218,165,32,0.35);
+    transform: translateY(-3px);
+}
+
+.valor-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(218,165,32,0.08);
+    border: 0.5px solid rgba(218,165,32,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.valor-icon i { font-size: 20px; color: #DAA520; }
+
+.valor-card h3 {
+    color: #F6D365; font-size: 14px; font-weight: 600;
+    margin: 0 0 8px; font-family: Georgia, serif;
+}
+
+.valor-card p {
+    color: rgba(255,255,255,0.4); font-size: 12px; line-height: 1.6; margin: 0;
+}
+
+/* Quote */
+.sobre-quote {
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.15);
+    border-radius: 16px; padding: 40px; text-align: center;
+    position: relative; overflow: hidden;
+}
+
+.sobre-quote::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728, transparent);
+}
+
+.sobre-quote::after {
+    content: "";
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728, transparent);
+}
+
+.quote-mark {
+    font-size: 60px; color: rgba(218,165,32,0.15); line-height: 0.7;
+    font-family: Georgia, serif; display: block; margin-bottom: 16px;
+}
+
+.sobre-quote blockquote {
+    color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.9;
+    font-style: italic; max-width: 600px; margin: 0 auto 20px;
+}
+
+.sobre-quote cite {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: #DAA520; font-style: normal;
+}

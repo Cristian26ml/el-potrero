@@ -3,36 +3,60 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/logros.css' %}">
 
-<div class="logros-container">
-    <h1>Logros de la Escuela ⚽</h1>
-
-    <div class="metrics">
-        <div class="metric">
-            <span class="number">{{ partidos_count }}</span>
-            <p>Partidos Disputados</p>
-        </div>
-        <div class="metric">
-            <span class="number">{{ entrenamientos_count }}</span>
-            <p>Entrenamientos Realizados</p>
-        </div>
-        <div class="metric">
-            <span class="number">{{ torneos_count }}</span>
-            <p>Torneos Organizados</p>
-        </div>
+<div class="logros-hero">
+    <div class="logros-eyebrow">
+        <div class="logros-eyebrow-line"></div>
+        <span>Nuestra historia</span>
+        <div class="logros-eyebrow-line"></div>
     </div>
+    <h1>Logros de <span>la Escuela</span></h1>
+    <p>El camino recorrido hasta hoy</p>
+</div>
 
-    <h2>Trofeos</h2>
-    <div class="trofeos">
+<div class="metrics-wrap">
+    <div class="metric">
+        <span class="number" data-target="{{ partidos_count }}">{{ partidos_count }}</span>
+        <div class="metric-divider"></div>
+        <p>Partidos Disputados</p>
+    </div>
+    <div class="metric">
+        <span class="number" data-target="{{ entrenamientos_count }}">{{ entrenamientos_count }}</span>
+        <div class="metric-divider"></div>
+        <p>Entrenamientos Realizados</p>
+    </div>
+    <div class="metric">
+        <span class="number" data-target="{{ torneos_count }}">{{ torneos_count }}</span>
+        <div class="metric-divider"></div>
+        <p>Torneos Organizados</p>
+    </div>
+</div>
+
+<div class="trofeos-section">
+    <div class="section-header">
+        <div class="section-header-line"></div>
+        <h2>Trofeos</h2>
+        <div class="section-header-line"></div>
+    </div>
+    <div class="trofeos-grid">
         {% for trofeo in trofeos %}
             <div class="trofeo-card">
+                <span class="trofeo-icon">🏆</span>
                 <h3>{{ trofeo.nombre }}</h3>
                 <p>{{ trofeo.descripcion }}</p>
-                <p><strong>Año:</strong> {{ trofeo.año }}</p>
+                <span class="trofeo-año">
+                    <i class="ti ti-calendar-event"></i> {{ trofeo.año }}
+                </span>
             </div>
         {% empty %}
-            <p>No hay trofeos registrados.</p>
+            <div class="trofeo-empty">
+                <p>No hay trofeos registrados aún.</p>
+            </div>
         {% endfor %}
     </div>
-    <a href="{% url 'home' %}" class="btn-volver">Volver</a>
 </div>
+
+<div class="logros-footer">
+    <a href="{% url 'home' %}" class="btn-volver">Volver al inicio</a>
+</div>
+
 {% endblock %}

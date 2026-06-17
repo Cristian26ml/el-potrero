@@ -1,47 +1,243 @@
-.contacto-container {
-    max-width: 600px;
-    margin: 40px auto;
-    background-color: #111;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px #FFD700;
-    color: #FFD700;
-}
-
-.contacto-container h1 {
+/* Hero contacto */
+.contacto-hero {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 100px 32px 48px;
+    background: linear-gradient(135deg, rgba(0,0,0,0.97) 0%, rgba(218,165,32,0.05) 100%);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728) 1;
+    margin-bottom: 48px;
 }
 
-form label {
+.contacto-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.contacto-eyebrow-line { width: 36px; height: 1px; background: #DAA520; }
+
+.contacto-eyebrow span {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #DAA520;
+    font-weight: 500;
+}
+
+.contacto-hero h1 {
+    color: #fff;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    font-family: Georgia, serif;
+}
+
+.contacto-hero h1 span { color: #F6D365; }
+
+.contacto-hero p {
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Alerta mensaje enviado */
+.contacto-alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(218,165,32,0.08);
+    border: 0.5px solid rgba(218,165,32,0.3);
+    border-left: 3px solid #DAA520;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 20px;
+    color: #F6D365;
+    font-size: 13px;
+    max-width: 960px;
+    margin: 0 auto 32px;
+}
+
+/* Layout */
+.contacto-layout {
+    display: flex;
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto 60px;
+    padding: 0 32px;
+    align-items: flex-start;
+}
+
+/* Tarjeta formulario */
+.contacto-card {
+    flex: 1;
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.2);
+    border-radius: 16px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contacto-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #DAA520, #F6D365, #DAA520, transparent);
+}
+
+.field-group { margin-bottom: 20px; }
+
+.field-group label {
     display: block;
-    margin-top: 10px;
-    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(218,165,32,0.7);
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
-form input, form textarea {
+.field-group input,
+.field-group textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #FFD700;
-    border-radius: 5px;
-    background-color: #000;
-    color: #FFD700;
+    padding: 12px 14px;
+    background: #000;
+    border: 0.5px solid rgba(218,165,32,0.25);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
 }
 
-form button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #FFD700;
+.field-group input::placeholder,
+.field-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+.field-group input:focus,
+.field-group textarea:focus {
+    outline: none;
+    border-color: rgba(218,165,32,0.6);
+}
+
+.field-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #B38728 0%, #FBF5B7 25%, #DAA520 50%, #F6D365 75%, #AA771C 100%);
     color: #111;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid #FDF6C7;
+    border-radius: 6px;
     cursor: pointer;
+    margin-top: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 1px 3px rgba(255,255,255,0.4) inset;
+    transition: all 0.3s ease;
 }
 
-form button:hover {
-    background-color: #111;
-    color: #FFD700;
-    border: 1px solid #FFD700;
+.btn-enviar:hover {
+    background: linear-gradient(135deg, #AA771C 0%, #F6D365 25%, #DAA520 50%, #FBF5B7 75%, #B38728 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(0,0,0,0.5), 0 0 25px rgba(250,218,94,0.4);
 }
+
+.btn-enviar:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Columna info */
+.contacto-info {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.info-card, .social-card {
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.15);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.info-card h3, .social-card h3 {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #DAA520;
+    margin: 0 0 20px;
+    font-weight: 500;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.05);
+}
+
+.info-item:last-child { border-bottom: none; }
+
+.info-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(218,165,32,0.08);
+    border: 0.5px solid rgba(218,165,32,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-icon i { font-size: 16px; color: #DAA520; }
+
+.info-text strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+}
+
+.info-text span { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+.social-links-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 0.5px solid rgba(255,255,255,0.06);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.social-link:hover {
+    border-color: rgba(218,165,32,0.3);
+    background: rgba(218,165,32,0.04);
+}
+
+.social-link i { font-size: 18px; color: rgba(218,165,32,0.6); }
+.social-link span { font-size: 13px; color: rgba(255,255,255,0.55); }
