@@ -2,68 +2,123 @@
 {% load static %}
 
 {% block content %}
-    <div class="dashboard">
-        <h1>Panel de Control - El Potrero ⚽</h1>
+<div class="dash-body">
 
-        <div class="metricas">
+    <div class="dash-header">
+        <h1>Panel de control <span>El Potrero</span></h1>
+        <p>Resumen general de la escuela</p>
+    </div>
 
-            <!-- Alumnos -->
-            <div class="card">
-                <h2>Alumnos inscritos</h2>
-                <p>{{ alumnos_count }}</p>
-                <a href="{% url 'admin:alumnos_alumno_changelist' %}" class="btn">Ver alumnos</a>
-                <a href="{% url 'admin:alumnos_alumno_add' %}" class="btn">+ Agregar alumno</a>
+    <div class="dash-section-title">
+        <span>Resumen general</span>
+        <div class="dash-section-title-line"></div>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-icon-row">
+                <div class="stat-icon"><i class="ti ti-users"></i></div>
             </div>
-
-            <!-- Eventos -->
-            <div class="card">
-                <h2>Próximos eventos</h2>
-                <ul>
-                    {% for evento in eventos %}
-                        <li>{{ evento.titulo }} - {{ evento.fecha }}</li>
-                    {% empty %}
-                        <li>No hay eventos próximos</li>
-                    {% endfor %}
-                </ul>
-                <a href="{% url 'admin:calendario_evento_changelist' %}" class="btn">Ver eventos</a>
-                <a href="{% url 'admin:calendario_evento_add' %}" class="btn">+ Crear evento</a>
+            <h2>Alumnos inscritos</h2>
+            <div class="stat-number">{{ alumnos_count }}</div>
+            <div class="stat-actions">
+                <a href="{% url 'admin:alumnos_alumno_changelist' %}" class="btn-mini secondary">Ver alumnos</a>
+                <a href="{% url 'admin:alumnos_alumno_add' %}" class="btn-mini primary">+ Agregar</a>
             </div>
+        </div>
 
-            <!-- Trofeos -->
-            <div class="card">
-                <h2>Trofeos registrados</h2>
-                <p>{{ trofeos_count }}</p>
-                <a href="{% url 'admin:logros_trofeo_changelist' %}" class="btn">Ver trofeos</a>
-                <a href="{% url 'admin:logros_trofeo_add' %}" class="btn">+ Registrar trofeo</a>
+        <div class="stat-card">
+            <div class="stat-icon-row">
+                <div class="stat-icon"><i class="ti ti-trophy"></i></div>
             </div>
-
-            <!-- Roles -->
-            <div class="card">
-                <h2>Distribución de usuarios por rol</h2>
-                <canvas id="usuariosChart"></canvas>
-                <script id="roles-data" type="application/json">{{ roles|safe }}</script>
-                <script id="cantidades-data" type="application/json">{{ cantidades|safe }}</script>
+            <h2>Trofeos registrados</h2>
+            <div class="stat-number">{{ trofeos_count }}</div>
+            <div class="stat-actions">
+                <a href="{% url 'admin:logros_trofeo_changelist' %}" class="btn-mini secondary">Ver trofeos</a>
+                <a href="{% url 'admin:logros_trofeo_add' %}" class="btn-mini primary">+ Registrar</a>
             </div>
+        </div>
 
-            <!-- Multimedia -->
-            <div class="card">
-                <h2>Galería multimedia</h2>
-                <p>Fotos: {{ fotos_count }}</p>
-                <p>Videos: {{ videos_count }}</p>
-                <a href="{% url 'admin:galeria_media_changelist' %}" class="btn">Ver galería</a>
-                <a href="{% url 'admin:galeria_media_add' %}" class="btn">+ Agregar foto/video</a>
+        <div class="stat-card">
+            <div class="stat-icon-row">
+                <div class="stat-icon"><i class="ti ti-photo"></i></div>
             </div>
-
-            <div class="card">
-                <h2>Inscripciones por mes</h2>
-                <canvas id="inscripcionesChart"></canvas>
-                <script id="meses-data" type="application/json">{{ meses|safe }}</script>
-                <script id="totales-data" type="application/json">{{ totales|safe }}</script>
+            <h2>Galería multimedia</h2>
+            <div class="stat-number">{{ fotos_count|add:videos_count }}</div>
+            <p class="stat-subtext">{{ fotos_count }} fotos · {{ videos_count }} videos</p>
+            <div class="stat-actions">
+                <a href="{% url 'admin:galeria_media_changelist' %}" class="btn-mini secondary">Ver galería</a>
+                <a href="{% url 'admin:galeria_media_add' %}" class="btn-mini primary">+ Agregar</a>
             </div>
-
-
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script src="{% static 'core/js/main.js' %}"></script>
         </div>
     </div>
+
+    <div class="dash-section-title">
+        <span>Próximos eventos</span>
+        <div class="dash-section-title-line"></div>
+    </div>
+
+    <div class="eventos-card">
+        <h2>Calendario</h2>
+        <ul class="evento-mini-list">
+            {% for evento in eventos %}
+                <li class="evento-mini-item">
+                    <span>{{ evento.titulo }}</span>
+                    <span>{{ evento.fecha|date:"d M" }}</span>
+                </li>
+            {% empty %}
+                <li class="evento-mini-empty">No hay eventos próximos</li>
+            {% endfor %}
+        </ul>
+        <div class="stat-actions">
+            <a href="{% url 'admin:calendario_evento_changelist' %}" class="btn-mini secondary">Ver eventos</a>
+            <a href="{% url 'admin:calendario_evento_add' %}" class="btn-mini primary">+ Crear evento</a>
+        </div>
+    </div>
+
+    <div class="dash-section-title">
+        <span>Estadísticas</span>
+        <div class="dash-section-title-line"></div>
+    </div>
+
+    <div class="chart-grid">
+        <div class="chart-card">
+            <h2>Distribución de usuarios por rol</h2>
+            <canvas id="usuariosChart"></canvas>
+            <script id="roles-data" type="application/json">{{ roles|safe }}</script>
+            <script id="cantidades-data" type="application/json">{{ cantidades|safe }}</script>
+        </div>
+        <div class="chart-card">
+            <h2>Inscripciones por mes</h2>
+            <canvas id="inscripcionesChart"></canvas>
+            <script id="meses-data" type="application/json">{{ meses|safe }}</script>
+            <script id="totales-data" type="application/json">{{ totales|safe }}</script>
+        </div>
+    </div>
+
+    <div class="dash-section-title">
+        <span>Gestión de usuarios</span>
+        <div class="dash-section-title-line"></div>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-icon-row">
+                <div class="stat-icon"><i class="ti ti-user-shield"></i></div>
+            </div>
+            <h2>Usuarios del panel</h2>
+            <p class="stat-subtext">Administradores, entrenadores y apoderados</p>
+            <div class="stat-actions">
+                <a href="{% url 'admin:auth_user_changelist' %}" class="btn-mini secondary">Ver usuarios</a>
+                <a href="{% url 'admin:auth_user_add' %}" class="btn-mini primary">+ Crear usuario</a>
+                <a href="{% url 'admin:auth_group_changelist' %}" class="btn-mini secondary">Ver grupos</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'core/js/main.js' %}"></script>
 {% endblock %}

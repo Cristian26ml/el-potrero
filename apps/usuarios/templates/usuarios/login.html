@@ -1,21 +1,38 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Login - El Potrero</title>
-    <link rel="stylesheet" href="{% static 'core/css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
-<body>
-    <div class="auth-container">
-        <h1>Iniciar Sesión ⚽</h1>
+<body class="login-body">
+
+    <div class="login-card">
+        <div class="login-icon-wrap"><i class="ti ti-shield-lock"></i></div>
+        <div class="login-eyebrow">
+            <div class="login-eyebrow-line"></div>
+            <span>Área privada</span>
+            <div class="login-eyebrow-line"></div>
+        </div>
+        <h1>Iniciar <span>Sesión</span></h1>
+        <p class="login-sub">Accede a tu cuenta de El Potrero</p>
+
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Entrar</button>
+            <button type="submit" class="btn-login">Entrar</button>
         </form>
-        <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+
+        <div class="login-divider">
+            <div class="login-divider-line"></div>
+            <span>o</span>
+            <div class="login-divider-line"></div>
+        </div>
+
+        <p class="login-footer-text">¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
     </div>
+
 </body>
 </html>

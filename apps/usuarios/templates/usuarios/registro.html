@@ -1,27 +1,40 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Registro - El Potrero</title>
-    <link rel="stylesheet" href="{% static 'core/css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/registro.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
-<body>
-    <div class="auth-container">
-        <h1>Registro de Usuario ⚽</h1>
+<body class="registro-body">
+
+    <div class="registro-card">
+        <div class="login-icon-wrap"><i class="ti ti-shield-lock"></i></div>
+        <div class="registro-eyebrow">
+            <div class="registro-eyebrow-line"></div>
+            <span>Únete hoy</span>
+            <div class="registro-eyebrow-line"></div>
+        </div>
+        <h1>Registro de <span>Usuario</span></h1>
+        <p class="registro-sub">Crea tu cuenta en El Potrero</p>
+
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Registrarse</button>
+            <button type="submit" class="btn-registro">Registrarse</button>
         </form>
+
         {% if messages %}
-            <ul>
+            <ul class="registro-messages">
                 {% for message in messages %}
-                    <li>{{ message }}</li>
+                    <li><i class="ti ti-alert-circle"></i>{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
+
+        <p class="registro-footer-text">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a></p>
     </div>
+
 </body>
 </html>

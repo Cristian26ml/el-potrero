@@ -3,20 +3,20 @@
 
 {% block extrastyle %}
     {{ block.super }}
-    <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'core/img/LOGOFUTBOL.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'core/img/LOGOFUTBOL.ico' %}" type="image/x-icon">
-
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/admin.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 {% endblock %}
 
 {% block branding %}
-    <h1 id="site-name">
-        <img src="{% static 'core/img/LOGOFUTBOL.png' %}" alt="El Potrero" style="height:50px; vertical-align:middle;">
-        Panel Administrativo - El Potrero
-    </h1>
+    <div class="branding-logo-wrap">
+        <img src="{% static 'core/img/LOGOFUTBOL.png' %}" alt="El Potrero" class="branding-logo">
+        <div class="branding-text">
+            <h1 id="site-name">El <span>Potrero</span></h1>
+            <p>Panel administrativo</p>
+        </div>
+    </div>
 {% endblock %}
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
