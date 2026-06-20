@@ -39,7 +39,32 @@
                 <li><a href="{% url 'galeria' %}">Galería</a></li>
                 <li><a href="{% url 'logros' %}">Logros</a></li>
                 <li><a href="{% url 'contacto' %}">Contacto</a></li>
-                <li><a href="{% url 'inscripcion' %}" class="nav-inscripcion">Inscripción</a></li>
+                <!--<li><a href="{% url 'inscripcion' %}" class="nav-inscripcion">Inscripción</a></li>-->
+
+                {% if user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-logout">
+                                <i class="ti ti-logout"></i> Cerrar sesión
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" class="nav-login">
+                            <i class="ti ti-login-2"></i> Iniciar sesión
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'password_change' %}" class="nav-config">
+                            <i class="ti ti-settings"></i>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
         <div class="hero">

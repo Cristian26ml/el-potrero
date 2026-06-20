@@ -17,7 +17,7 @@ def registro(request):
         if form.is_valid():
             form.save()
             messages.success(
-                request, "Registro exitoso ⚽. Ahora puedes iniciar sesión.")
+                request, "Registro exitoso. Ahora puedes iniciar sesión.")
             return redirect("login")  # redirige al login
     else:
         form = UserCreationForm()
