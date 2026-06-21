@@ -8,6 +8,10 @@
     margin-bottom: 48px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .cal-eyebrow {
     display: flex; align-items: center; justify-content: center;
     gap: 14px; margin-bottom: 16px;
@@ -138,6 +142,7 @@
 .tipo-partido   { color: rgba(100,200,100,0.8) !important; border-color: rgba(100,200,100,0.25) !important; }
 .tipo-entrenamiento { color: rgba(100,150,255,0.8) !important; border-color: rgba(100,150,255,0.25) !important; }
 .tipo-torneo    { color: rgba(218,165,32,0.8) !important; border-color: rgba(218,165,32,0.25) !important; }
+.tipo-reunion    { color: rgba(218,165,32,0.8) !important; border-color: rgba(218,165,32,0.25) !important; }
 
 /* Estado vacío */
 .cal-empty {

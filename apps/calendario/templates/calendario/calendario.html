@@ -22,6 +22,7 @@
         <button class="cal-filtro" data-filtro="partido">Partidos</button>
         <button class="cal-filtro" data-filtro="entrenamiento">Entrenamientos</button>
         <button class="cal-filtro" data-filtro="torneo">Torneos</button>
+        <button class="cal-filtro" data-filtro="reunion">Reuniones</button>
     </div>
 
     <div class="eventos-list">
@@ -42,6 +43,8 @@
                                 <i class="ti ti-run"></i>
                             {% elif evento.tipo_evento|lower == "torneo" %}
                                 <i class="ti ti-trophy"></i>
+                            {% elif evento.tipo_evento|lower == "reunion" %}
+                                <i class="ti ti-users"></i>
                             {% endif %}
                             {{ evento.tipo_evento }}
                         </span>
@@ -59,6 +62,6 @@
         {% endfor %}
     </div>
 </div>
-<script src="{% static 'static/js/calendario.js' %}"></script>
+<script src="{% static 'js/calendario.js' %}"></script>
 
 {% endblock %}

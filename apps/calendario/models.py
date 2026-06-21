@@ -1,6 +1,13 @@
 # apps/calendario/models.py
 from django.db import models
 
+TIPOS_EVENTO = [
+    ("partido", "Partido"),
+    ("entrenamiento", "Entrenamiento"),
+    ("reunion", "Reunión"),
+    ("torneo", "Torneo"),  # nuevo tipo
+]
+
 
 class Evento(models.Model):
     titulo = models.CharField(max_length=100)
@@ -10,6 +17,7 @@ class Evento(models.Model):
         ('entrenamiento', 'Entrenamiento'),
         ('partido', 'Partido'),
         ('reunion', 'Reunión'),
+        ('torneo', 'Torneo')
     ])
 
     def __str__(self):

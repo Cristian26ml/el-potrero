@@ -1,3 +1,4 @@
+import json
 from django.contrib import admin
 from django.urls import path
 from django.template.response import TemplateResponse
@@ -29,6 +30,7 @@ class CustomAdminSite(admin.AdminSite):
         from apps.logros.models import Trofeo
         from apps.galeria.models import Media
         from apps.usuarios.models import Profile
+        from apps.programas.models import Programa
 
         # --- Inscripciones por mes ---
         inscripciones_por_mes = (
@@ -46,17 +48,21 @@ class CustomAdminSite(admin.AdminSite):
             "Alumnos": Profile.objects.filter(rol="alumno").count(),
         }
 
+        programas_count = Programa.objects.filter(activo=True).count()
+
         context = dict(
             self.each_context(request),
             alumnos_count=Alumno.objects.count(),
             eventos=Evento.objects.order_by("fecha")[:5],
             trofeos_count=Trofeo.objects.count(),
-            roles=list(usuarios_por_rol.keys()),
-            cantidades=list(usuarios_por_rol.values()),
+            roles=json.dumps(list(usuarios_por_rol.keys())),
+            cantidades=json.dumps(list(usuarios_por_rol.values())),
             fotos_count=Media.objects.filter(tipo="foto").count(),
             videos_count=Media.objects.filter(tipo="video").count(),
-            meses=[i["mes"].strftime("%b %Y") for i in inscripciones_por_mes],
-            totales=[i["total"] for i in inscripciones_por_mes],
+            meses=json.dumps([i["mes"].strftime("%b %Y")
+                             for i in inscripciones_por_mes]),
+            totales=json.dumps([i["total"] for i in inscripciones_por_mes]),
+            programas_count=programas_count,
         )
         return TemplateResponse(request, "admin/index.html", context)
 

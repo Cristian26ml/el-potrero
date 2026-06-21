@@ -1,4 +1,4 @@
-{% extends "admin/index.html" %}
+{% extends "admin/base_site.html" %}
 {% load static %}
 
 {% block content %}
@@ -52,6 +52,16 @@
             </div>
         </div>
     </div>
+
+    <div class="stat-card">
+        <h2>Programas activos</h2>
+        <div class="stat-number">{{ programas_count }}</div>
+        <div class="stat-actions">
+            <a href="{% url 'admin:programas_programa_changelist' %}" class="btn-mini secondary">Ver programas</a>
+            <a href="{% url 'admin:programas_programa_add' %}" class="btn-mini primary">+ Crear programa</a>
+        </div>
+    </div>
+
 
     <div class="dash-section-title">
         <span>Próximos eventos</span>

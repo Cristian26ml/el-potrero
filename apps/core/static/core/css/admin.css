@@ -353,6 +353,10 @@
     padding: 20px 0px !important;
 }
 
+#content-start {
+    max-width: 100% !important;
+}
+
 .colMS, .colMS #content-main {
     margin-right: 0 !important;
 }
@@ -363,4 +367,16 @@
     max-width: 100% !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
+}
+
+#nav-sidebar {
+    display: none;  /* oculta el menú lateral */
+}
+#toggle-nav-sidebar {
+    display: none;
+}
+
+.submit-row input{
+    background: linear-gradient(135deg, #B38728 0%, #DAA520 50%, #F6D365 100%) !important;
+    color: #111 !important;
 }

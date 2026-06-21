@@ -1,38 +1,65 @@
 // apps/core/static/core/js/main.js
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Paleta consistente con el dashboard
+    const GOLD = '#DAA520';
+    const GOLD_LIGHT = '#F6D365';
+    const GOLD_PALE = '#FBF5B7';
+    const GOLD_DARK = '#AA771C';
+    const TEXT_MUTED = 'rgba(255,255,255,0.45)';
+    const GRID_COLOR = 'rgba(218,165,32,0.08)';
+
+    Chart.defaults.font.family = "Arial, sans-serif";
+    Chart.defaults.color = TEXT_MUTED;
+
     // --- Gráfico de roles ---
-    const ctxRoles = document.getElementById('usuariosChart').getContext('2d');
+    const ctxRolesEl = document.getElementById('usuariosChart');
+    if (ctxRolesEl) {
+        const ctxRoles = ctxRolesEl.getContext('2d');
+        const roles = JSON.parse(document.getElementById('roles-data').textContent);
+        const cantidades = JSON.parse(document.getElementById('cantidades-data').textContent);
 
-    const roles = JSON.parse(document.getElementById('roles-data').textContent);
-    const cantidades = JSON.parse(document.getElementById('cantidades-data').textContent);
-
-    new Chart(ctxRoles, {
-        type: 'pie',
-        data: {
-            labels: roles,
-            datasets: [{
-                label: 'Usuarios por rol',
-                data: cantidades,
-                backgroundColor: [
-                    '#FFD700', // dorado
-                    '#000000', // negro
-                    '#1E90FF', // azul
-                    '#32CD32'  // verde
-                ],
-                borderColor: '#fff',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
+        new Chart(ctxRoles, {
+            type: 'doughnut',
+            data: {
+                labels: roles,
+                datasets: [{
+                    label: 'Usuarios por rol',
+                    data: cantidades,
+                    backgroundColor: [GOLD_LIGHT, GOLD, GOLD_DARK, 'rgba(218,165,32,0.25)'],
+                    borderColor: '#0d0d0d',
+                    borderWidth: 3,
+                    hoverOffset: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: TEXT_MUTED,
+                            font: { size: 11, family: "Arial" },
+                            padding: 16,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#0d0d0d',
+                        borderColor: 'rgba(218,165,32,0.3)',
+                        borderWidth: 1,
+                        titleColor: GOLD_LIGHT,
+                        bodyColor: '#fff',
+                        padding: 12,
+                        cornerRadius: 8
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 
     // --- Gráfico de inscripciones por mes ---
     const inscripcionesChartEl = document.getElementById('inscripcionesChart');
@@ -40,33 +67,54 @@ document.addEventListener("DOMContentLoaded", function () {
         const meses = JSON.parse(document.getElementById('meses-data').textContent);
         const totales = JSON.parse(document.getElementById('totales-data').textContent);
 
-        new Chart(inscripcionesChartEl.getContext('2d'), {
+        const ctx = inscripcionesChartEl.getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+        gradient.addColorStop(0, 'rgba(246,211,101,0.25)');
+        gradient.addColorStop(1, 'rgba(246,211,101,0)');
+
+        new Chart(ctx, {
             type: 'line',
             data: {
                 labels: meses,
                 datasets: [{
-                    label: 'Inscripciones por mes',
+                    label: 'Inscripciones',
                     data: totales,
-                    borderColor: '#FFD700',
-                    backgroundColor: 'rgba(255,215,0,0.2)',
+                    borderColor: GOLD_LIGHT,
+                    backgroundColor: gradient,
                     fill: true,
-                    tension: 0.3
+                    tension: 0.35,
+                    pointBackgroundColor: '#0d0d0d',
+                    pointBorderColor: GOLD_LIGHT,
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#0d0d0d',
+                        borderColor: 'rgba(218,165,32,0.3)',
+                        borderWidth: 1,
+                        titleColor: GOLD_LIGHT,
+                        bodyColor: '#fff',
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: false
                     }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { color: '#FFD700' }
+                        grid: { color: GRID_COLOR, drawBorder: false },
+                        ticks: { color: TEXT_MUTED, font: { size: 11 } }
                     },
                     x: {
-                        ticks: { color: '#FFD700' }
+                        grid: { display: false },
+                        ticks: { color: TEXT_MUTED, font: { size: 11 } }
                     }
                 }
             }
