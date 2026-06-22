@@ -1,4 +1,3 @@
-/* Hero */
 .cal-hero {
     text-align: center;
     padding: 100px 32px 48px;
@@ -50,7 +49,6 @@
 
 .cal-badge i { font-size: 13px; color: #DAA520; }
 
-/* Wrap y filtros */
 .cal-wrap { max-width: 860px; margin: 0 auto; padding: 0 32px 80px; }
 
 .cal-filtros { display: flex; gap: 10px; margin-bottom: 32px; flex-wrap: wrap; }
@@ -71,7 +69,6 @@
     color: #F6D365;
 }
 
-/* Lista de eventos */
 .eventos-list { display: flex; flex-direction: column; gap: 14px; }
 
 .evento {
@@ -85,7 +82,6 @@
 
 .evento.hidden { display: none; }
 
-/* Columna fecha */
 .evento-fecha-col {
     width: 80px; flex-shrink: 0;
     background: rgba(218,165,32,0.06);
@@ -111,7 +107,6 @@
     margin-top: 8px; letter-spacing: 1px;
 }
 
-/* Cuerpo del evento */
 .evento-body { flex: 1; padding: 20px 24px; }
 
 .evento-header {
@@ -138,13 +133,11 @@
     line-height: 1.6; margin: 0;
 }
 
-/* Colores por tipo */
 .tipo-partido   { color: rgba(100,200,100,0.8) !important; border-color: rgba(100,200,100,0.25) !important; }
 .tipo-entrenamiento { color: rgba(100,150,255,0.8) !important; border-color: rgba(100,150,255,0.25) !important; }
 .tipo-torneo    { color: rgba(218,165,32,0.8) !important; border-color: rgba(218,165,32,0.25) !important; }
 .tipo-reunion    { color: rgba(218,165,32,0.8) !important; border-color: rgba(218,165,32,0.25) !important; }
 
-/* Estado vacío */
 .cal-empty {
     text-align: center; padding: 64px 32px;
     color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px;

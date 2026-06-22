@@ -1,4 +1,3 @@
-/* Login */
 .login-body {
     background: #000;
     min-height: 100vh;
@@ -81,7 +80,6 @@
     margin: 0 0 32px;
 }
 
-/* Campos generados por Django ({{ form.as_p }}) */
 .login-card form p { margin-bottom: 20px; }
 
 .login-card form p label {
@@ -111,7 +109,6 @@
     border-color: rgba(218,165,32,0.6);
 }
 
-/* Errores del formulario (login, registro, etc.) */
 .errorlist {
     list-style: none;
     margin: 0 0 20px;

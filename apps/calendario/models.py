@@ -5,7 +5,7 @@ TIPOS_EVENTO = [
     ("partido", "Partido"),
     ("entrenamiento", "Entrenamiento"),
     ("reunion", "Reunión"),
-    ("torneo", "Torneo"),  # nuevo tipo
+    ("torneo", "Torneo"),
 ]
 
 

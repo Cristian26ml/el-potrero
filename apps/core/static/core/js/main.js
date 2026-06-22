@@ -1,7 +1,6 @@
 // apps/core/static/core/js/main.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Paleta consistente con el dashboard
     const GOLD = '#DAA520';
     const GOLD_LIGHT = '#F6D365';
     const GOLD_PALE = '#FBF5B7';
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     Chart.defaults.font.family = "Arial, sans-serif";
     Chart.defaults.color = TEXT_MUTED;
 
-    // --- Gráfico de roles ---
     const ctxRolesEl = document.getElementById('usuariosChart');
     if (ctxRolesEl) {
         const ctxRoles = ctxRolesEl.getContext('2d');
@@ -61,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- Gráfico de inscripciones por mes ---
     const inscripcionesChartEl = document.getElementById('inscripcionesChart');
     if (inscripcionesChartEl) {
         const meses = JSON.parse(document.getElementById('meses-data').textContent);

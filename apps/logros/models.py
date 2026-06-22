@@ -1,4 +1,3 @@
-# apps/logros/models.py
 from django.db import models
 
 

@@ -1,0 +1,145 @@
+.aviso-body {
+    background: #000;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 32px;
+    box-sizing: border-box;
+}
+
+.aviso-card {
+    background: #0d0d0d;
+    border: 0.5px solid rgba(218,165,32,0.2);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.aviso-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #AA771C, #F6D365, #DAA520, #FBF5B7, #B38728, transparent);
+}
+
+.aviso-ambient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(218,165,32,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.aviso-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(218,165,32,0.08);
+    border: 1px solid rgba(218,165,32,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.aviso-icon i { font-size: 26px; color: #DAA520; }
+
+.aviso-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.aviso-eyebrow-line { width: 28px; height: 1px; background: #DAA520; }
+
+.aviso-eyebrow span {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #DAA520;
+    font-weight: 500;
+}
+
+.aviso-card h2 {
+    color: #fff;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    font-family: Georgia, serif;
+}
+
+.aviso-card h2 span { color: #F6D365; }
+
+.aviso-divider {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #DAA520, transparent);
+    margin: 18px auto;
+}
+
+.aviso-card p {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aviso-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-crear {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #B38728 0%, #FBF5B7 25%, #DAA520 50%, #F6D365 75%, #AA771C 100%);
+    color: #111;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    border: 1px solid #FDF6C7;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 1px 3px rgba(255,255,255,0.4) inset;
+    transition: all 0.3s ease;
+}
+
+.btn-crear:hover {
+    background: linear-gradient(135deg, #AA771C 0%, #F6D365 25%, #DAA520 50%, #FBF5B7 75%, #B38728 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(0,0,0,0.5), 0 0 25px rgba(250,218,94,0.4);
+}
+
+.btn-iniciar {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    color: #F6D365;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    border: 0.5px solid rgba(218,165,32,0.45);
+    transition: all 0.25s ease;
+}
+
+.btn-iniciar:hover {
+    background: rgba(218,165,32,0.1);
+    border-color: rgba(218,165,32,0.7);
+}

@@ -40,14 +40,14 @@ LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',  # <-- se queda, pero desactivamos autodiscover
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.core.apps.CoreConfig',  # <-- referencia explícita al AppConfig
-    'apps.alumnos',
+    'apps.core.apps.CoreConfig',
+    'apps.alumnos.apps.AlumnosConfig',
     'apps.calendario',
     'apps.galeria',
     'apps.logros',

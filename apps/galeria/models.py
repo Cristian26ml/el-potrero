@@ -18,7 +18,6 @@ class Media(models.Model):
             try:
                 file_id = self.url_original.split("/d/")[1].split("/")[0]
                 if self.tipo == "foto":
-                    # thumbnail es más confiable que uc?export=view
                     return f"https://drive.google.com/thumbnail?id={file_id}&sz=w800"
                 elif self.tipo == "video":
                     return f"https://drive.google.com/file/d/{file_id}/preview"

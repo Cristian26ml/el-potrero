@@ -52,3 +52,11 @@ def contacto(request):
 
 def sobre_nosotros(request):
     return render(request, "core/sobre_nosotros.html")
+
+
+def politica_privacidad(request):
+    return render(request, "core/politica_privacidad.html")
+
+
+def terminos(request):
+    return render(request, "core/terminos.html")

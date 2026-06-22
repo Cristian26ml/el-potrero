@@ -1,4 +1,3 @@
-/* Hero contacto */
 .contacto-hero {
     text-align: center;
     padding: 100px 32px 48px;
@@ -46,7 +45,6 @@
     margin: 0;
 }
 
-/* Alerta mensaje enviado */
 .contacto-alert {
     display: flex;
     align-items: center;
@@ -63,7 +61,6 @@
     margin: 0 auto 32px;
 }
 
-/* Layout */
 .contacto-layout {
     display: flex;
     gap: 32px;
@@ -73,7 +70,6 @@
     align-items: flex-start;
 }
 
-/* Tarjeta formulario */
 .contacto-card {
     flex: 1;
     background: #0d0d0d;
@@ -160,7 +156,6 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
-/* Columna info */
 .contacto-info {
     width: 260px;
     flex-shrink: 0;

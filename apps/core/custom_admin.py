@@ -4,11 +4,8 @@ from django.urls import path
 from django.template.response import TemplateResponse
 from django.db.models.functions import TruncMonth
 from django.db.models import Count
-
-# Importar modelos de autenticación
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
-
 from apps.contacto.models import MensajeContacto
 
 
@@ -32,7 +29,6 @@ class CustomAdminSite(admin.AdminSite):
         from apps.usuarios.models import Profile
         from apps.programas.models import Programa
 
-        # --- Inscripciones por mes ---
         inscripciones_por_mes = (
             Alumno.objects
             .annotate(mes=TruncMonth("fecha_inscripcion"))
@@ -67,10 +63,7 @@ class CustomAdminSite(admin.AdminSite):
         return TemplateResponse(request, "admin/index.html", context)
 
 
-# Instancia del sitio personalizado
 admin_site = CustomAdminSite(name="custom_admin")
-
-# Registrar modelos propios
 
 
 class MensajeContactoAdmin(admin.ModelAdmin):
@@ -80,7 +73,5 @@ class MensajeContactoAdmin(admin.ModelAdmin):
 
 
 admin_site.register(MensajeContacto, MensajeContactoAdmin)
-
-# Registrar usuarios y grupos en el admin personalizado
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)

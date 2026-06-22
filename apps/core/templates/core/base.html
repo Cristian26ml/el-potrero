@@ -6,11 +6,11 @@
     <title>{% block title %}Escuela de Fútbol El Potrero{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     {% block extra_css %}{% endblock %}
 </head>
 <body class="theme-negro-dorado">
 
-    <!-- Header -->
     <header>
         <div class="topbar">
             <span class="topbar-brand">Escuela de Fútbol El Potrero</span>
@@ -39,7 +39,6 @@
                 <li><a href="{% url 'galeria' %}">Galería</a></li>
                 <li><a href="{% url 'logros' %}">Logros</a></li>
                 <li><a href="{% url 'contacto' %}">Contacto</a></li>
-                <!--<li><a href="{% url 'inscripcion' %}" class="nav-inscripcion">Inscripción</a></li>-->
 
                 {% if user.is_authenticated %}
                     <li>
@@ -74,15 +73,55 @@
         </div>
     </header>
 
-    <!-- Contenido dinámico -->
     <main>
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Escuela de Fútbol El Potrero</p>
+    <footer class="footer-potrero">
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                <h3>Escuela de Fútbol <span>El Potrero</span></h3>
+                <div class="footer-line"></div>
+                <p>Formando deportistas y personas con pasión, disciplina y excelencia.</p>
+            </div>
+
+            <div class="footer-info">
+                <h4>Contacto</h4>
+                <p><i class="fa-solid fa-envelope"></i> contacto@elpotrero.cl</p>
+                <p><i class="fa-solid fa-phone"></i> +56 9 1234 5678</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Información</h4>
+                <a href="{% url 'politica_privacidad' %}">Política de Privacidad</a>
+                <a href="{% url 'terminos' %}">Términos de Uso</a>
+            </div>
+
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="https://facebook.com/elpotrero" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://instagram.com/elpotrero" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://twitter.com/elpotrero" target="_blank">
+                        <i class="fa-brands fa-x"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Escuela de Fútbol El Potrero · Todos los derechos reservados
+        </div>
     </footer>
+
 
     <script src="{% static 'core/js/logros.js' %}"></script>
 </body>

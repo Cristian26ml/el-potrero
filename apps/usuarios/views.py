@@ -18,7 +18,7 @@ def registro(request):
             form.save()
             messages.success(
                 request, "Registro exitoso. Ahora puedes iniciar sesión.")
-            return redirect("login")  # redirige al login
+            return redirect("login")
     else:
         form = UserCreationForm()
     return render(request, "usuarios/registro.html", {"form": form})
@@ -35,12 +35,19 @@ def inscripcion(request):
 
         programa = Programa.objects.get(id=programa_id)
         Alumno.objects.create(
+            user=request.user,
             nombre=nombre,
             edad=edad,
             apoderado=apoderado,
             telefono=telefono,
             programa=programa
         )
-        return redirect("home")  # o a una página de confirmación
+        messages.success(
+            request, "Inscripción enviada. Espera validación del administrador.")
+        return redirect("home")
 
     return render(request, "usuarios/inscripcion.html", {"programas": programas})
+
+
+def aviso_inscripcion(request):
+    return render(request, "usuarios/aviso_inscripcion.html")

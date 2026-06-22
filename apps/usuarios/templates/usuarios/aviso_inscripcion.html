@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Cuenta requerida - El Potrero{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'usuarios/css/aviso_inscripcion.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="aviso-body">
+    <div class="aviso-card">
+        <div class="aviso-ambient"></div>
+        <div class="aviso-icon"><i class="ti ti-alert-triangle"></i></div>
+        <div class="aviso-eyebrow">
+            <div class="aviso-eyebrow-line"></div>
+            <span>Aviso importante</span>
+            <div class="aviso-eyebrow-line"></div>
+        </div>
+        <h2>Cuenta <span>Requerida</span></h2>
+        <div class="aviso-divider"></div>
+        <p>Para inscribirte debes tener primero una cuenta en la página y asi formar parte de El Potrero.</p>
+        <div class="aviso-actions">
+            <a href="{% url 'registro' %}" class="btn-crear">Crear cuenta</a>
+            <a href="{% url 'login' %}" class="btn-iniciar">Iniciar sesión</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

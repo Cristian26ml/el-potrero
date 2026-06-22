@@ -7,3 +7,5 @@ class AlumnoForm(forms.ModelForm):
         model = Alumno
         fields = ['nombre', 'apellido', 'fecha_nacimiento', 'apoderado',
                   'email', 'telefono']
+        exclude = ['user', 'pago_confirmado',
+                   'estado_inscripcion', 'fecha_inscripcion']

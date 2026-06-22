@@ -3,6 +3,7 @@ from apps.core import views as core_views
 from apps.galeria import views as galeria_views
 from apps.contacto import views as contacto_views
 from apps.calendario import views as calendario_views
+from . import views
 
 urlpatterns = [
     path("", core_views.home, name="home"),
@@ -12,4 +13,7 @@ urlpatterns = [
     path("logros/", core_views.logros, name="logros"),
     path("contacto/", contacto_views.contacto, name="contacto"),
     path("sobre-nosotros/", core_views.sobre_nosotros, name="sobre_nosotros"),
+    path("politica-privacidad/", views.politica_privacidad,
+         name="politica_privacidad"),
+    path("terminos/", views.terminos, name="terminos"),
 ]
