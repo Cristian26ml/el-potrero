@@ -39,7 +39,7 @@
                 <li><a href="{% url 'galeria' %}">Galería</a></li>
                 <li><a href="{% url 'logros' %}">Logros</a></li>
                 <li><a href="{% url 'contacto' %}">Contacto</a></li>
-
+                <li><a href="/admin/">Panel Admin</a></li>
                 {% if user.is_authenticated %}
                     <li>
                         <form action="{% url 'logout' %}" method="post" class="logout-form">
