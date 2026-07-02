@@ -25,7 +25,7 @@ Backend: Django (Python 3.13)
 
 Frontend: HTML, CSS, JavaScript
 
-Base de datos: PostgreSQL / SQLite (para desarrollo)
+Base de datos: PostgreSQL(para desarrollo)
 
 Servidor local (Windows): Waitress
 
